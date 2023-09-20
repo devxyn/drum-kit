@@ -5,11 +5,15 @@ for (let i = 0; i < drums.length; i++) {
     const drumKey = this.innerHTML;
 
     makeSound(drumKey);
+
+    buttonAnimation(drumKey);
   });
 }
 
 document.addEventListener("keydown", function (event) {
   makeSound(event.key);
+
+  buttonAnimation(event.key);
 });
 
 function makeSound(key) {
@@ -52,3 +56,11 @@ function makeSound(key) {
       break;
   }
 }
+
+const buttonAnimation = (currentKey) => {
+  document.querySelector(`.${currentKey}`).classList.add("pressed");
+
+  setTimeout(() => {
+    document.querySelector(`.${currentKey}`).classList.remove("pressed");
+  }, 100);
+};
